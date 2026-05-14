@@ -1,4 +1,4 @@
-public class CacktoPayClient {
+public class CaktoPayClient {
 
 }
 // chama HTTP + recebe webhook pending ou aceept
