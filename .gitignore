@@ -13,8 +13,6 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
 *.iws
 *.iml
 *.ipr
@@ -32,4 +30,28 @@ build/
 ### VS Code ###
 .vscode/
 
+# Secrets 
+application-local.properties.example
 .env
+.env.local
+*.env
+ 
+# ── Java / Maven ──────────────────────────────────────────────────
+target/
+*.class
+*.jar
+*.war
+.mvn/wrapper/maven-wrapper.jar
+ 
+# ── IDE ───────────────────────────────────────────────────────────
+.idea/
+*.iml
+.vscode/settings.json
+.classpath
+.project
+.settings/
+ 
+# ── OS ────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+ 

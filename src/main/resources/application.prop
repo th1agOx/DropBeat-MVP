@@ -1,0 +1,65 @@
+ spring.application.name=beatdrop-api
+ 
+spring.profiles.active=local
+ 
+server.port=8080
+server.error.include-message=always
+server.error.include-binding-errors=always
+ 
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.driver-class-name=org.postgresql.Driver
+ 
+# Pool de conexões (HikariCP — padrão do Spring Boot)
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=2
+spring.datasource.hikari.connection-timeout=30000
+spring.datasource.hikari.idle-timeout=600000
+ 
+# ── JPA / Hibernate ───────────────────────────────────────────────
+# NUNCA use create-drop ou create em produção
+# O Flyway é o responsável pelo schema — o JPA só valida
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+ 
+# Evita o problema do N+1 com lazy loading fora de transação
+spring.jpa.open-in-view=false
+ 
+# ── Flyway ────────────────────────────────────────────────────────
+spring.flyway.enabled=true
+spring.flyway.locations=classpath:db/migration
+spring.flyway.baseline-on-migrate=false
+spring.flyway.validate-on-migrate=true
+ 
+# ── Suno API ──────────────────────────────────────────────────────
+suno.api.base-url=${SUNO_API_BASE_URL}
+suno.api.key=${SUNO_API_KEY}
+# Timeout em ms para a geração (Suno pode demorar)
+suno.api.timeout-ms=60000
+ 
+# ── CactoPay ─────────────────────────────────────────────────────
+cacto.pay.base-url=${CACTO_PAY_BASE_URL}
+cacto.pay.api-key=${CACTO_PAY_API_KEY}
+# Secret para validar assinatura HMAC do webhook
+cacto.pay.webhook-secret=${CACTO_PAY_WEBHOOK_SECRET}
+ 
+# ── AWS S3 ────────────────────────────────────────────────────────
+aws.s3.region=${AWS_S3_REGION}
+aws.s3.bucket-name=${AWS_S3_BUCKET_NAME}
+aws.s3.access-key=${AWS_ACCESS_KEY_ID}
+aws.s3.secret-key=${AWS_SECRET_ACCESS_KEY}
+# TTL das pre-signed URLs em horas
+aws.s3.presigned-url-ttl-browser-hours=24
+aws.s3.presigned-url-ttl-email-hours=48
+ 
+# ── E-mail (Resend) ───────────────────────────────────────────────
+resend.api.key=${RESEND_API_KEY}
+resend.from-email=beats@seudominio.com
+ 
+# ── Logging ───────────────────────────────────────────────────────
+logging.level.root=INFO
+logging.level.com.beatdrop=DEBUG
+logging.level.org.hibernate.SQL=DEBUG
