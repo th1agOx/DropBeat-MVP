@@ -1,3 +1,5 @@
+package com.beatdrop.api.infra.storage;
+
 public class S3StorageService {
 
 }
