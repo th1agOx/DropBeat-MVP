@@ -1,3 +1,5 @@
+package com.beatdrop.api.beat;
+
 public class BeatService {
 
 }

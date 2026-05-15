@@ -1,3 +1,5 @@
+package com.beatdrop.api.order;
+
 public class OrderService {
 
 }

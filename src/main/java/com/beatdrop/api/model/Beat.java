@@ -1,4 +1,4 @@
-package com.beatdrop.api.beat;
+package com.beatdrop.api.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -54,12 +54,12 @@ public class Beat {
     private String sunoJobId;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, legth = 20)
+    @Column(nullable = false, length = 20)
     @Builder.Default
-    private GenerationStatus generationStatus = GenerationStatus.PEDING;
+    private GenerationStatus generationStatus = GenerationStatus.PENDING;
 
     // Path do áudio de preview
-    @Column(legth = 500)
+    @Column(length = 500)
     private String previewS3Key;
 
     @Column(length = 500)
